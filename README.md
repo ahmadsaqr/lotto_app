@@ -1,1 +1,1 @@
-try it and good luck it lol 
+try it and good luck lol 
