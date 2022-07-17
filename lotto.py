@@ -74,12 +74,7 @@ def x(which=""):
             x(which)    
 
     else:
-        print("you must choose either strike or lotto\n".upper())
         x()    
 
   
 x()
-
-# x="asdsad sadsa ad".split(' ')
-# x=",".join(x)     
-# print(x)
