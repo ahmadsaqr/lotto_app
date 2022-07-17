@@ -1,12 +1,12 @@
 import random,re
 
-def luck(x,p="",w=""):
+def luck(L,p="",w=""):
     luck_st=f"\n******GOOD LUCK******\n"
 
     if w=="lotto":
 
         print(luck_st)
-        for index,i in enumerate(range(int(x))):
+        for index,i in enumerate(range(int(L))):
             a=" ".join(sorted(str(i).zfill(2) for i in random.sample(range(1,41),6)))
             if p=="yes":
                 print(f"{a} \t   {str(random.randint(1,10)).zfill(2)}")
@@ -18,14 +18,10 @@ def luck(x,p="",w=""):
     else:
         
         print(luck_st)
-        global sub
-        sub=[]
-        for index,i in enumerate(range(int(x))):
-                a=" ".join(sorted(str(i).zfill(2) for i in random.sample(range(1,41),4)))
+        for index,i in enumerate(range(int(L))):
+                a=" ".join(str(i).zfill(2) for i in random.sample(range(1,41),4))
                 print(a)
-                sub.append(a)
         print(luck_st)
-        # return sub
 
 
 
@@ -35,12 +31,12 @@ def x(which=""):
         
         which=input('do you want lotto or strike ?\n'.upper()).lower()
 
-        if  re.search(r"[strikea]*",which).group() != ""  :
-            if re.search(r"[strikea]*",which).group() == "strike":
+        if  re.search(r"[strike]*",which).group() != ""  :
+            if re.search(r"[strike]*",which).group() == "strike":
                 which="strike"
             else:
                 ask=input("do you mean strike ? yes or no ?\n").lower()
-                if ask=="yes":
+                if ask=='yes':
                     which="strike"
                 else:
                     x()
@@ -74,7 +70,12 @@ def x(which=""):
             x(which)    
 
     else:
+        # print("you must choose either strike or lotto\n".upper())
         x()    
 
   
 x()
+
+# x="asdsad sadsa ad".split(' ')
+# x=",".join(x)     
+# print(x)
