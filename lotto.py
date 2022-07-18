@@ -26,12 +26,10 @@ def luck(L,p="",w=""):
 
 
 def x(which=""):
-    
-    if which == "":
-        
-        which=input('do you want lotto or strike ?\n'.upper()).lower()
+     
+    which=input('do you want lotto or strike ?\n'.upper()).lower()
 
-        if  re.search(r"[strike]*",which).group() != ""  :
+    if  re.search(r"[strike]*",which).group() != ""  :
             if re.search(r"[strike]*",which).group() == "strike":
                 which="strike"
             else:
@@ -42,7 +40,7 @@ def x(which=""):
                     x()
 
 
-        if  re.search(r"[lto]*",which).group() != ""  :
+    if  re.search(r"[lto]*",which).group() != ""  :
             if re.search(r"[lto]*",which).group() == "lotto":
                 which="lotto"
             else:
