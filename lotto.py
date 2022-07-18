@@ -1,3 +1,4 @@
+# from curses.ascii import isspace
 import random,re
 
 def luck(L,p="",w=""):
@@ -25,51 +26,44 @@ def luck(L,p="",w=""):
 
 
 
-def x(which=""):
+def x():
     
-    if which == "":
-        
-        which=input('do you want lotto or strike ?\n'.upper()).lower()
-
-        if  re.search(r"[strike]*",which).group() != ""  :
-            if re.search(r"[strike]*",which).group() == "strike":
+    which=input('do you want lotto or strike ?\n'.upper()).lower()
+    
+    if  which.isspace() != True:
+        if re.search(r"[strike]*",which).group().lower() == "strike":
+            which="strike"
+        else:
+            ask=input("do you mean strike ? yes or no ?\n".upper()).lower()
+            if ask=='yes':
                 which="strike"
             else:
-                ask=input("do you mean strike ? yes or no ?\n").lower()
-                if ask=='yes':
-                    which="strike"
-                else:
-                    x()
-
-
-        if  re.search(r"[lto]*",which).group() != ""  :
-            if re.search(r"[lto]*",which).group() == "lotto":
+                x()
+                
+    if which.isspace() != True:
+        if re.search(r"[lto]*",which).group().lower() == "lotto":
+            which="lotto"
+        else:
+            ask_lotto=input("do you mean lotto ? yes or no ? \n".upper()).lower()
+            if ask_lotto=="yes":
                 which="lotto"
             else:
-                ask_lotto=input("do you mean lotto ? yes or no ? \n".upper()).lower()
-                if ask_lotto=="yes":
-                    which="lotto"
-                else:
-                    x()
-
-
+                x()
+                
     if which == "lotto" or which == "strike" :
         lines=input('How many rows do you wish ?\n')
         
         if  lines.isdigit():
-
             if which=="lotto":
                 power=input("Do you wish powerball ? yes or no \n".upper()).lower()
                 luck(lines,power,which)
-
             else:
                 luck(lines)
-
         else:
             print("you must only insert a number\n".upper())
             x(which)    
-
+   
     else:
         x()    
-  
+
 x()
