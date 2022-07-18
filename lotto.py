@@ -29,7 +29,7 @@ def x(which=""):
      
     which=input('do you want lotto or strike ?\n'.upper()).lower()
 
-    if  re.search(r"[strike]*",which).group() != ""  :
+    if  re.search(r"[strike]*",which).group().lower() != ""  :
             if re.search(r"[strike]*",which).group() == "strike":
                 which="strike"
             else:
@@ -41,7 +41,7 @@ def x(which=""):
 
 
     if  re.search(r"[lto]*",which).group() != ""  :
-            if re.search(r"[lto]*",which).group() == "lotto":
+            if re.search(r"[lto]*",which).group().lower() == "lotto":
                 which="lotto"
             else:
                 ask_lotto=input("do you mean lotto ? yes or no ? \n".upper()).lower()
