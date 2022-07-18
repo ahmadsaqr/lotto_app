@@ -26,48 +26,50 @@ def luck(L,p="",w=""):
 
 
 def x(which=""):
-     
-    which=input('do you want lotto or strike ?\n'.upper()).lower()
+    
+    if which=="": 
+        which=input('do you want lotto or strike ?\n'.capitalize()).lower()
 
-    if  re.search(r"[strike]*",which).group().lower() != ""  :
-            if re.search(r"[strike]*",which).group() == "strike":
-                which="strike"
-            else:
-                ask=input("do you mean strike ? yes or no ?\n".upper()).lower()
+        if  which != "lotto" and which !="strike"  :
+            if re.search(r"[srike]*",which).group() :
+                ask=input("do you mean strike ? yes or no ?\n".capitalize()).lower()
                 if ask=='yes':
                     which="strike"
                 else:
                     x()
 
 
-    if  re.search(r"[lto]*",which).group() != ""  :
-            if re.search(r"[lto]*",which).group().lower() == "lotto":
-                which="lotto"
-            else:
-                ask_lotto=input("do you mean lotto ? yes or no ? \n".upper()).lower()
-                if ask_lotto=="yes":
+            else: 
+                ask=input("do you mean lotto ? yes or no ? \n".capitalize()).lower()
+                if ask=="yes":
                     which="lotto"
                 else:
                     x()
-
-
-    if which == "lotto" or which == "strike" :
-        lines=input('How many rows do you wish ?\n'.upper())
-        
-        if  lines.isdigit():
-
-            if which=="lotto":
-                power=input("Do you wish powerball ? yes or no \n".upper()).lower()
-                luck(lines,power,which)
-
-            else:
-                luck(lines)
-
         else:
-            print("you must only insert a number\n".upper())
-            x(which)    
-
+            if which=="lotto":
+                which="lotto"                
+            
+            else:
+                which="strike"
+    else:            
+        
+        if which=="lotto":
+            which="lotto"                
+            
+        else:
+            which="strike"
+    
+    lines=input('How many rows do you wish ?\n'.capitalize())
+    
+    if  lines.isdigit():
+        if which=="lotto":
+            power=input("Do you wish powerball ? yes or no \n".capitalize()).lower()
+            luck(lines,power,which)
+        else:
+            luck(lines)
     else:
-        x()    
+        print("you must only insert a number\n".capitalize())
+        x(which)    
+
   
 x()
