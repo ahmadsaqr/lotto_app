@@ -22,7 +22,7 @@ def luck(L,p="",w=""):
         print(luck_st)
         for i in range(int(L)):
                 a=" ".join(str(i).zfill(2) for i in random.sample(range(1,41),4))
-                print(colored(a,"yellow"))
+                print(colored(a,"blue"))
         print(luck_st)
 
 
@@ -33,7 +33,7 @@ def x(which=""):
         which=input(colored('do you want lotto or strike ?\n','red').capitalize()).lower()
 
         if  which != "lotto" and which !="strike"  :
-            if re.search(r"[srike]*",which).group() :
+            if re.search(r"[strike]*",which).group() :
                 ask=input(colored("do you mean strike ? yes or no ?\n",'red').capitalize()).lower()
                 if ask=='yes':
                     which="strike"
@@ -41,12 +41,15 @@ def x(which=""):
                     x()
 
 
-            else: 
+            elif re.search(r"[lotto]*",which).group() : 
                 ask=input(colored("do you mean lotto ? yes or no ? \n",'red').capitalize()).lower()
                 if ask=="yes":
                     which="lotto"
                 else:
                     x()
+            
+            else:
+                x()        
         else:
             if which=="lotto":
                 which="lotto"                
